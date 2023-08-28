@@ -1,70 +1,37 @@
-# Push_Swap
+# Libft
 
-The **Push_Swap** project aims to sort a set of integers using a specific set of instructions on two stacks. This program generates a sequence of push_swap instructions to achieve the desired sorting.
+**Libft** is an individual project at 42 that involves re-creating standard C library functions along with additional ones. This endeavor aids in building a library of useful functions for the program's progression. Although reinventing existing functions might seem counterintuitive, 42's approach is aimed at fostering a deeper understanding of data structures and fundamental algorithms. This project is carried out due to the restriction of using certain standard libraries in 42's projects, compelling students to develop their own library of functions to support their work.
 
-> :warning: **Note:** Understand all code before using it; copying without comprehension is detrimental.
+> :warning: **Note:** It's crucial to avoid copying and pasting code without comprehending it, both for your own learning and the integrity of the educational process.
 
-## Instruction Set
+## About the Project
 
-The following instructions are utilized for sorting:
+The project is structured into four sections:
 
-Code | Instruction | Action
----- | ----------- | ------
-sa   | swap a      | Swaps the top 2 elements of stack a
-sb   | swap b      | Swaps the top 2 elements of stack b
-ss   | swap a + swap b | Performs both sa and sb
-pa   | push a      | Moves the top element of stack b to the top of stack a
-pb   | push b      | Moves the top element of stack a to the top of stack b
-ra   | rotate a    | Shifts all stack a elements from bottom to top
-rb   | rotate b    | Shifts all stack b elements from bottom to top
-rr   | rotate a + rotate b | Performs both ra and rb
-rra  | reverse rotate a | Shifts all stack a elements from top to bottom
-rrb  | reverse rotate b | Shifts all stack b elements from top to bottom
-rrr  | reverse rotate a + reverse rotate b | Performs both rra and rrb
+1. **Libc Functions:** Replicating some of the standard C library functions.
+2. **Additional Functions:** Creating functions deemed valuable for upcoming projects.
+3. **Bonus Functions:** Constructing functions beneficial for manipulating linked lists.
+4. **Personal Functions:** Developing functions anticipated to be useful in the future.
 
-## Algorithm
+Although the code might not be optimal, it has successfully passed all 42 tests and has been utilized in other 42 projects.
 
-For stacks with a size less than 6, a simple sorting method is employed (found in the `src` folder).
+## Note
 
-The primary algorithm used is **Radix sort**. This efficient algorithm sorts non-negative integers with a time complexity of O(n). It operates by distributing numbers into "boxes" based on their digits and then rearranging them based on the box order.
+- Most file and function names are prefixed with `ft`. This stands for "Forty Two," indicating their association with 42.
+- The project instructions mandate that all source files be placed in the root directory. However, for the organization of this GitHub repository, the files are divided into subfolders.
 
-- Sort starts from the least significant digit.
-- Each number is placed in the box corresponding to its digit.
-- Numbers are then connected in order of the boxes.
+## How Libft Works
 
-This process is repeated for each digit, resulting in a fully sorted array.
+The objective is to generate a library named `libft.a` from the source files. This library can then be used in other 42 projects. To achieve this:
 
-## Simplifying Numbers
+1. After downloading or cloning this project, navigate to the project directory and execute the `make` command:
 
-Since negative numbers are present in the project, numbers are simplified before sorting. Each number is assigned an index, with the smallest getting index 0, next smallest getting 1, and so on. This simplifies the range to [0, N), where N is the size of the list.
+```sh
+$ git clone https://github.com/42YerevanProjects/42_Libft.git
+$ cd 42_Libft
+$ make
+```
 
-Additionally, to replicate the boxes used in Radix sort, two stacks are employed, corresponding to 1s and 0s. The process is as follows:
+2. This should result in a `libft.a` file and associated object files (`.o`).
 
-- Start from the rightmost bit.
-- If the bit of the top number in stack A is 0, perform pb (push to stack B); else, perform ra (rotate A).
-- After all numbers are processed, they are in the box corresponding to their digit.
-
-This procedure is repeated for every bit, resulting in a sorted stack A.
-
-## Algorithm Performance
-
-The push_swap algorithm achieves:
-
-- 3 numbers sorted in a maximum of 3 instructions
-- 4 numbers sorted in a maximum of 7 instructions
-- 5 numbers sorted in a maximum of 11 instructions
-- 100 numbers sorted in a maximum of 1084 instructions (3 points)
-- 500 numbers sorted in a maximum of 6785 instructions (4 points)
-
-The algorithm is sufficient for project requirements and can exceed 105% with bonus completion.
-
-## Bonus
-
-The bonus task involves writing a program named **checker** that takes stack A as an argument (formatted as a list of integers). Checker reads instructions from standard input, executes them on the stack, and then verifies the sorting.
-
-- If stack A is sorted and stack B is empty, checker displays "OK."
-- Otherwise, it displays "KO."
-- Invalid arguments result in an "Error" message.
-
-
-<img width="147" alt="image" src="https://user-images.githubusercontent.com/119530584/224474718-2df6347d-65a4-4cf7-a025-1a5f865f7b9d.png">
+That's it!
